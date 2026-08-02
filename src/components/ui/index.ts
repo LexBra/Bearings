@@ -5,4 +5,5 @@ export {
   type AppTextColor,
   type AppTextProps,
 } from "./Text";
+export { TextField, type TextFieldProps } from "./TextField";
 export { TextLink, type TextLinkProps } from "./TextLink";
