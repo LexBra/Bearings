@@ -6,9 +6,9 @@ import { env } from "@/constants/env";
 import type { Database } from "@/types/database";
 
 /**
- * Supabase browser/mobile client.
+ * Supabase client (auth, database, storage).
  * Auth sessions are persisted with AsyncStorage on native.
- * We will swap in typed Database definitions once the schema exists.
+ * Swap in generated Database types once the schema exists.
  */
 export const supabase = createClient<Database>(
   env.supabaseUrl || "https://placeholder.supabase.co",

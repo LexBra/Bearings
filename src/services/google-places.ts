@@ -18,7 +18,7 @@ type AutocompleteResponse = {
 
 /**
  * Thin Google Places (New) API wrapper.
- * Keep network calls here so screens stay simple and testable.
+ * Service files own network calls so screens stay simple and testable.
  */
 export async function autocompletePlaces(
   input: string,

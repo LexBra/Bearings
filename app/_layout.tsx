@@ -4,8 +4,8 @@ import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 
 /**
- * Root layout wraps every screen.
- * Keep global providers (auth, theme, query client) here as we add them.
+ * Root layout for Expo Router.
+ * Navigation shell lives here; screen UI lives in src/screens/.
  */
 export default function RootLayout() {
   return (
