@@ -22,15 +22,26 @@ Then press `i` (iOS), `a` (Android), `w` (web), or scan the QR code with Expo Go
 
 ```text
 Bearings/
-├── app/                         # Expo Router entry points (thin route files)
-│   ├── _layout.tsx              # Root navigation shell
-│   └── index.tsx                # Route "/" → renders HomeScreen
+├── app/                         # Expo Router routes (thin wrappers)
+│   ├── _layout.tsx              # Root stack
+│   ├── index.tsx                # Auth vs Tabs redirect
+│   ├── (auth)/                  # Authentication stack
+│   │   ├── welcome.tsx
+│   │   ├── login.tsx
+│   │   └── sign-up.tsx
+│   └── (tabs)/                  # Main bottom tabs
+│       ├── index.tsx            # Home
+│       ├── search.tsx
+│       ├── saved.tsx
+│       ├── map.tsx
+│       └── profile.tsx
 │
 ├── src/
 │   ├── components/              # Reusable UI building blocks
 │   ├── screens/                 # Full-screen UI used by routes
-│   ├── navigation/              # Route names + navigation helpers
-│   ├── hooks/                   # Shared React hooks
+│   │   └── auth/                # Auth screen placeholders
+│   ├── navigation/              # Route names + nav types
+│   ├── hooks/                   # Shared React hooks (incl. useAuth stub)
 │   ├── services/                # External APIs (Supabase, Google Places)
 │   ├── constants/               # Env vars, theme tokens, static config
 │   ├── utils/                   # Pure helpers (no React, no network)
