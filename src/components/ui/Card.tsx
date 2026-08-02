@@ -11,15 +11,15 @@ import { cn } from "@/utils/cn";
 
 const cardVariants = {
   elevated: {
-    className: "bg-surface",
+    className: "bg-cream",
     shadow: shadows.md,
   },
   outlined: {
-    className: "bg-surface border border-line",
+    className: "bg-cream border border-soil",
     shadow: shadows.none,
   },
   soft: {
-    className: "bg-brand-50",
+    className: "bg-sun",
     shadow: shadows.none,
   },
 } as const;

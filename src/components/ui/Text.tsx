@@ -1,6 +1,11 @@
 import { Text as RNText, type TextProps as RNTextProps } from "react-native";
 
-import { colors, textVariants, type TextVariant } from "@/theme";
+import {
+  colors,
+  resolveFontFamily,
+  textVariants,
+  type TextVariant,
+} from "@/theme";
 import { cn } from "@/utils/cn";
 
 const colorMap = {
@@ -12,6 +17,8 @@ const colorMap = {
   accent: colors.accent.DEFAULT,
   danger: colors.semantic.danger,
   success: colors.semantic.success,
+  cream: colors.cream,
+  soil: colors.soil,
 } as const;
 
 export type AppTextColor = keyof typeof colorMap;
@@ -24,8 +31,8 @@ export type AppTextProps = RNTextProps & {
 };
 
 /**
- * Reusable text styles for Bearings.
- * Change recipes in src/theme/tokens.js → textVariants.
+ * Reusable Bearings text.
+ * Headers = Akshar · Subheads = DM Sans Bold caps · Body = Andale Mono
  */
 export function AppText({
   variant = "body",
@@ -43,7 +50,7 @@ export function AppText({
       className={cn(center && "text-center", className)}
       style={[
         {
-          fontFamily: recipe.fontFamily,
+          fontFamily: resolveFontFamily(recipe.fontFamily),
           fontSize: recipe.fontSize,
           lineHeight: recipe.lineHeight,
           letterSpacing: recipe.letterSpacing,

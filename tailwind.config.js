@@ -1,9 +1,4 @@
-const {
-  colors,
-  spacing,
-  radii,
-  fonts,
-} = require("./src/theme/tokens");
+const { colors, spacing, radii, fonts } = require("./src/theme/tokens");
 
 /** @type {import('tailwindcss').Config} */
 module.exports = {
@@ -12,10 +7,17 @@ module.exports = {
   theme: {
     extend: {
       colors: {
+        ink: colors.ink,
+        cream: colors.cream,
+        signal: colors.signal,
+        sun: colors.sun,
+        sky: colors.sky,
+        moss: colors.moss,
+        soil: colors.soil,
         brand: colors.brand,
         accent: colors.accent,
         surface: colors.surface,
-        ink: colors.text,
+        text: colors.text,
         line: colors.border,
         success: {
           DEFAULT: colors.semantic.success,
@@ -37,14 +39,9 @@ module.exports = {
       spacing,
       borderRadius: radii,
       fontFamily: {
-        display: [fonts.display.regular],
-        "display-medium": [fonts.display.medium],
-        "display-semibold": [fonts.display.semibold],
-        "display-bold": [fonts.display.bold],
-        sans: [fonts.sans.regular],
-        "sans-medium": [fonts.sans.medium],
-        "sans-semibold": [fonts.sans.semibold],
-        "sans-bold": [fonts.sans.bold],
+        header: [fonts.header],
+        subhead: [fonts.subhead],
+        mono: [fonts.mono, "monospace"],
       },
     },
   },

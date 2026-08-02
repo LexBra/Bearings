@@ -8,18 +8,17 @@ type PlaceholderScreenProps = {
 
 /**
  * Minimal stand-in so we can verify navigation before Figma UI lands.
- * Uses design-system text styles — not a designed product screen.
  */
 export function PlaceholderScreen({ title }: PlaceholderScreenProps) {
   return (
-    <View className="flex-1 items-center justify-center bg-surface-muted px-6">
-      <AppText variant="overline" color="muted">
+    <View className="flex-1 items-center justify-center bg-cream px-6">
+      <AppText variant="overline" color="soil">
         Bearings
       </AppText>
-      <AppText variant="title" color="brand" center className="mt-2">
+      <AppText variant="title" color="primary" center className="mt-2">
         {title}
       </AppText>
-      <AppText variant="body" color="muted" center className="mt-3">
+      <AppText variant="body" color="soil" center className="mt-3">
         Placeholder — UI coming from Figma
       </AppText>
     </View>

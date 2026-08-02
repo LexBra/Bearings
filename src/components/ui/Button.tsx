@@ -9,35 +9,36 @@ import { AppText } from "@/components/ui/Text";
 import {
   buttonSizes,
   colors,
-  fonts,
+  resolveFontFamily,
   type ButtonSize,
 } from "@/theme";
 import { cn } from "@/utils/cn";
 
 const variants = {
+  /** Black pill, cream label — primary CTA from Figma */
   primary: {
-    container: "bg-brand",
-    pressed: "bg-brand-700",
-    text: "inverse" as const,
-    spinner: colors.brand.foreground,
+    container: "bg-ink",
+    pressed: "opacity-90",
+    text: "cream" as const,
+    spinner: colors.cream,
   },
   secondary: {
-    container: "bg-brand-100",
-    pressed: "bg-brand-200",
-    text: "brand" as const,
-    spinner: colors.brand.DEFAULT,
+    container: "bg-sun",
+    pressed: "opacity-90",
+    text: "primary" as const,
+    spinner: colors.ink,
   },
   ghost: {
     container: "bg-transparent",
-    pressed: "bg-surface-muted",
-    text: "brand" as const,
-    spinner: colors.brand.DEFAULT,
+    pressed: "opacity-70",
+    text: "soil" as const,
+    spinner: colors.soil,
   },
   danger: {
-    container: "bg-danger",
-    pressed: "bg-[#912018]",
-    text: "inverse" as const,
-    spinner: colors.brand.foreground,
+    container: "bg-signal",
+    pressed: "opacity-90",
+    text: "cream" as const,
+    spinner: colors.cream,
   },
 } as const;
 
@@ -52,13 +53,12 @@ export type ButtonProps = Omit<PressableProps, "children"> & {
 };
 
 /**
- * Reusable Bearings button.
- * Variants/sizes read from theme tokens — update tokens.js to restyle globally.
+ * Reusable Bearings button (Andale Mono labels, pill radius by default).
  */
 export function Button({
   label,
   variant = "primary",
-  size = "md",
+  size = "lg",
   loading = false,
   disabled,
   className,
@@ -95,7 +95,7 @@ export function Button({
               variant="label"
               color={palette.text}
               style={{
-                fontFamily: fonts.sans.semibold,
+                fontFamily: resolveFontFamily("AndaleMono"),
                 fontSize: metrics.fontSize,
                 lineHeight: metrics.lineHeight,
               }}

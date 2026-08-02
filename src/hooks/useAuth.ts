@@ -9,7 +9,7 @@
  */
 export function useAuth() {
   return {
-    isAuthenticated: true,
+    isAuthenticated: false,
     isLoading: false,
   } as const;
 }

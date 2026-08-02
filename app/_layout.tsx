@@ -2,17 +2,16 @@ import "react-native-gesture-handler";
 import "../global.css";
 
 import {
-  Fraunces_400Regular,
-  Fraunces_500Medium,
-  Fraunces_600SemiBold,
-  Fraunces_700Bold,
-} from "@expo-google-fonts/fraunces";
+  Akshar_400Regular,
+  Akshar_500Medium,
+  Akshar_600SemiBold,
+  Akshar_700Bold,
+} from "@expo-google-fonts/akshar";
 import {
-  Manrope_400Regular,
-  Manrope_500Medium,
-  Manrope_600SemiBold,
-  Manrope_700Bold,
-} from "@expo-google-fonts/manrope";
+  DMSans_400Regular,
+  DMSans_500Medium,
+  DMSans_700Bold,
+} from "@expo-google-fonts/dm-sans";
 import { useFonts } from "expo-font";
 import { Stack } from "expo-router";
 import * as SplashScreen from "expo-splash-screen";
@@ -25,18 +24,17 @@ SplashScreen.preventAutoHideAsync();
 
 /**
  * Root navigator + design-system font loading.
- * Font family names must match src/theme/tokens.js → fonts.
+ * Headers: Akshar · Subheads: DM Sans Bold · Body: system Andale Mono
  */
 export default function RootLayout() {
   const [fontsLoaded, fontError] = useFonts({
-    Fraunces_400Regular,
-    Fraunces_500Medium,
-    Fraunces_600SemiBold,
-    Fraunces_700Bold,
-    Manrope_400Regular,
-    Manrope_500Medium,
-    Manrope_600SemiBold,
-    Manrope_700Bold,
+    Akshar_400Regular,
+    Akshar_500Medium,
+    Akshar_600SemiBold,
+    Akshar_700Bold,
+    DMSans_400Regular,
+    DMSans_500Medium,
+    DMSans_700Bold,
   });
 
   useEffect(() => {
@@ -55,7 +53,7 @@ export default function RootLayout() {
       <Stack
         screenOptions={{
           headerShown: false,
-          contentStyle: { backgroundColor: colors.surface.DEFAULT },
+          contentStyle: { backgroundColor: colors.cream },
         }}
       >
         <Stack.Screen name="index" />

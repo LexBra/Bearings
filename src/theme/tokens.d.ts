@@ -1,22 +1,23 @@
 declare const tokens: {
   colors: {
+    ink: string;
+    cream: string;
+    signal: string;
+    sun: string;
+    sky: string;
+    moss: string;
+    soil: string;
     brand: {
-      50: string;
-      100: string;
-      200: string;
-      300: string;
-      400: string;
-      500: string;
-      600: string;
-      700: string;
-      800: string;
-      900: string;
       DEFAULT: string;
       foreground: string;
+      soft: string;
+      muted: string;
     };
     accent: {
       DEFAULT: string;
       soft: string;
+      sky: string;
+      moss: string;
       foreground: string;
     };
     surface: {
@@ -100,18 +101,9 @@ declare const tokens: {
     };
   };
   fonts: {
-    display: {
-      regular: string;
-      medium: string;
-      semibold: string;
-      bold: string;
-    };
-    sans: {
-      regular: string;
-      medium: string;
-      semibold: string;
-      bold: string;
-    };
+    header: string;
+    subhead: string;
+    mono: string;
   };
   textVariants: Record<
     | "display"

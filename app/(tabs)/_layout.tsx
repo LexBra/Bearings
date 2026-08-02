@@ -3,7 +3,7 @@ import { Tabs } from "expo-router";
 import type { ComponentProps } from "react";
 import type { ColorValue } from "react-native";
 
-import { colors, fonts } from "@/theme";
+import { colors, fontFamilies } from "@/theme";
 
 type IconName = ComponentProps<typeof Ionicons>["name"];
 
@@ -25,24 +25,20 @@ function tabIcon(outline: IconName, solid: IconName) {
   );
 }
 
-/**
- * Main tab navigator (React Navigation bottom tabs via Expo Router).
- * Tab colors/fonts come from the Bearings theme tokens.
- */
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: colors.brand.DEFAULT,
-        tabBarInactiveTintColor: colors.text.muted,
+        tabBarActiveTintColor: colors.ink,
+        tabBarInactiveTintColor: colors.soil,
         tabBarStyle: {
-          backgroundColor: colors.surface.DEFAULT,
-          borderTopColor: colors.border.DEFAULT,
+          backgroundColor: colors.cream,
+          borderTopColor: colors.soil,
         },
         tabBarLabelStyle: {
-          fontFamily: fonts.sans.medium,
-          fontSize: 12,
+          fontFamily: fontFamilies.mono,
+          fontSize: 11,
         },
       }}
     >

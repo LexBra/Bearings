@@ -109,21 +109,26 @@ All visual tokens live in **one file**: `src/theme/tokens.js`.
 | Piece | Where | How to use |
 | --- | --- | --- |
 | Colors, spacing, radii, shadows, fonts | `src/theme/tokens.js` | `import { theme, colors } from "@/theme"` |
-| NativeWind / Tailwind mapping | `tailwind.config.js` (reads tokens) | `className="bg-brand text-ink-primary"` |
-| Text styles | `<AppText variant="title" />` | `src/components/ui/Text.tsx` |
-| Buttons | `<Button label="Continue" />` | variants: `primary` `secondary` `ghost` `danger` |
-| Cards | `<Card variant="elevated">` | variants: `elevated` `outlined` `soft` |
+| NativeWind / Tailwind mapping | `tailwind.config.js` (reads tokens) | `className="bg-cream text-ink"` |
+| Text styles | `<AppText variant="title" />` | Headers / subheads / body |
+| Buttons | `<Button label="Get Started" />` | pill CTAs, Andale Mono |
+| Cards | `<Card variant="elevated">` | `elevated` `outlined` `soft` |
 
-**Brand fonts:** Fraunces (display / brand moments) + Manrope (UI body). Loaded in `app/_layout.tsx`.
+**Brand colors:** `#010000` `#fffce2` `#ed3e0b` `#fff6a5` `#cde9f9` `#b2aa4b` `#5a302a`
 
-**To restyle the app later:** edit `src/theme/tokens.js` only — components and Tailwind both read from it. When Figma tokens arrive, replace values there.
+**Typography**
+- Headers → **Akshar Bold** (`display`, `title`)
+- Subheads → **DM Sans Bold** uppercase (`headline`, `overline`)
+- Body + buttons → **Andale Mono** (system on iOS; monospace fallback elsewhere)
+
+**To restyle later:** edit `src/theme/tokens.js` only.
 
 ```tsx
 import { AppText, Button, Card } from "@/components/ui";
 
 <Card variant="soft">
   <AppText variant="headline">Saved places</AppText>
-  <AppText variant="body" color="muted">Coming from Figma next.</AppText>
+  <AppText variant="body" color="soil">Coming from Figma next.</AppText>
   <Button label="Continue" className="mt-4" />
 </Card>
 ```

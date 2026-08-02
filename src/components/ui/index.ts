@@ -5,3 +5,4 @@ export {
   type AppTextColor,
   type AppTextProps,
 } from "./Text";
+export { TextLink, type TextLinkProps } from "./TextLink";
