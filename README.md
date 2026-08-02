@@ -1,1 +1,164 @@
 # Bearings
+
+A React Native app built with **Expo**, **TypeScript**, **NativeWind**, **Supabase**, and the **Google Places API**.
+
+We build incrementally from your Figma designs — no invented screens ahead of time.
+
+---
+
+## Getting started
+
+```bash
+npm install
+cp .env.example .env   # fill in keys when you have them
+npm start
+```
+
+Then press `i` (iOS), `a` (Android), `w` (web), or scan the QR code with Expo Go.
+
+---
+
+## Project structure (what each folder is for)
+
+```text
+Bearings/
+├── app/                         # Expo Router routes (thin wrappers)
+│   ├── _layout.tsx              # Root stack
+│   ├── index.tsx                # Auth vs Tabs redirect
+│   ├── (auth)/                  # Authentication stack
+│   │   ├── welcome.tsx
+│   │   ├── login.tsx
+│   │   └── sign-up.tsx
+│   └── (tabs)/                  # Main bottom tabs
+│       ├── index.tsx            # Home
+│       ├── search.tsx
+│       ├── saved.tsx
+│       ├── map.tsx
+│       └── profile.tsx
+│
+├── src/
+│   ├── components/              # Reusable UI building blocks
+│   ├── screens/                 # Full-screen UI used by routes
+│   │   └── auth/                # Auth screen placeholders
+│   ├── navigation/              # Route names + nav types
+│   ├── hooks/                   # Shared React hooks (incl. useAuth stub)
+│   ├── services/                # External APIs (Supabase, Google Places)
+│   ├── constants/               # Env vars, theme tokens, static config
+│   ├── utils/                   # Pure helpers (no React, no network)
+│   └── types/                   # Shared TypeScript types
+│
+├── assets/
+│   ├── icons/                   # App icons + favicon
+│   ├── images/                  # Splash + in-app images
+│   └── fonts/                   # Custom fonts (added later)
+│
+├── global.css                   # NativeWind / Tailwind entry
+├── tailwind.config.js           # Design tokens + content paths
+└── .env.example                 # Safe template for API keys
+```
+
+### Folder guide
+
+| Folder | Purpose | Put here… | Don’t put here… |
+| --- | --- | --- | --- |
+| **`app/`** | Routing only (Expo Router). A file = a URL/route. | Thin wrappers that render a screen | Big UI, API calls, business logic |
+| **`src/screens/`** | One file per screen’s UI | `HomeScreen`, `LoginScreen`, etc. | Buttons used on many screens |
+| **`src/components/`** | Reusable UI pieces | Buttons, inputs, cards, list rows | Full screens |
+| **`src/navigation/`** | Navigation helpers | Route name constants, linking helpers | Screen layouts (those stay in `app/`) |
+| **`src/hooks/`** | Shared React logic | `useAuth`, `useDebounce` | One-off logic used by a single screen |
+| **`src/services/`** | Talking to the outside world | Supabase client, Places API calls | UI components |
+| **`src/constants/`** | Values that rarely change | Colors, spacing, env readers | Functions with side effects |
+| **`src/utils/`** | Small pure helpers | `cn()`, formatters, validators | Hooks or network code |
+| **`src/types/`** | TypeScript shapes shared across files | `PlaceDetails`, DB types | Runtime logic |
+| **`assets/icons/`** | App icons | Icon PNGs used by Expo / stores | Screen mockups |
+| **`assets/images/`** | Visual assets | Splash, photos, illustrations | Fonts |
+| **`assets/fonts/`** | Custom typefaces | `.ttf` / `.otf` files | Images |
+
+### Why `app/` and `src/screens/` are separate
+
+- **`app/`** tells Expo Router *which routes exist*.
+- **`src/screens/`** holds the actual screen UI.
+
+That keeps routing configuration small and makes screens easier to find, test, and match to Figma frames.
+
+### Path alias
+
+Import from `src/` with `@/`:
+
+```ts
+import { HomeScreen } from "@/screens/HomeScreen";
+import { supabase } from "@/services/supabase";
+import { routes } from "@/navigation";
+```
+
+---
+
+## Design workflow (Figma → code)
+
+1. You share a Figma frame.
+2. We update tokens in `src/constants/theme.ts` + `tailwind.config.js`.
+3. We add the screen under `src/screens/` and a thin route in `app/`.
+4. Shared UI moves into `src/components/` once it appears more than once.
+
+---
+
+## Design system
+
+All visual tokens live in **one file**: `src/theme/tokens.js`.
+
+| Piece | Where | How to use |
+| --- | --- | --- |
+| Colors, spacing, radii, shadows, fonts | `src/theme/tokens.js` | `import { theme, colors } from "@/theme"` |
+| NativeWind / Tailwind mapping | `tailwind.config.js` (reads tokens) | `className="bg-cream text-ink"` |
+| Text styles | `<AppText variant="title" />` | Headers / subheads / body |
+| Buttons | `<Button label="Get Started" />` | pill CTAs, Andale Mono |
+| Cards | `<Card variant="elevated">` | `elevated` `outlined` `soft` |
+
+**Brand colors:** `#010000` `#fffce2` `#ed3e0b` `#fff6a5` `#cde9f9` `#b2aa4b` `#5a302a`
+
+**Typography**
+- Headers → **Akshar Bold** (`display`, `title`)
+- Subheads → **DM Sans Bold** uppercase (`headline`, `overline`)
+- Body + buttons → **Andale Mono** (system on iOS; monospace fallback elsewhere)
+
+**To restyle later:** edit `src/theme/tokens.js` only.
+
+```tsx
+import { AppText, Button, Card } from "@/components/ui";
+
+<Card variant="soft">
+  <AppText variant="headline">Saved places</AppText>
+  <AppText variant="body" color="soil">Coming from Figma next.</AppText>
+  <Button label="Continue" className="mt-4" />
+</Card>
+```
+
+## Navigation structure
+
+Bearings uses **Expo Router** (built on **React Navigation**):
+
+```text
+Root Stack
+├── (auth) stack        → Welcome, Login, Sign Up
+└── (tabs) bottom tabs  → Home, Search, Saved, Map, Profile
+```
+
+- Route files live in `app/` (thin wrappers)
+- Screen UI lives in `src/screens/`
+- Route constants live in `src/navigation/routes.ts`
+- Auth gate stub: `src/hooks/useAuth.ts` (`isAuthenticated` flip switches Auth vs Tabs)
+
+## Already wired
+
+- Expo Router + React Navigation (stack + bottom tabs)
+- NativeWind (`className` styling)
+- Supabase + Google Places service scaffolding
+- Placeholder screens only (no Figma UI yet)
+
+## Useful scripts
+
+| Command | Purpose |
+| --- | --- |
+| `npm start` | Start Expo |
+| `npm run typecheck` | TypeScript check |
+| `npm run android` / `ios` / `web` | Platform shortcuts |
