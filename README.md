@@ -91,12 +91,27 @@ import { routes } from "@/navigation";
 
 ---
 
+## Navigation structure
+
+Bearings uses **Expo Router** (built on **React Navigation**):
+
+```text
+Root Stack
+├── (auth) stack        → Welcome, Login, Sign Up
+└── (tabs) bottom tabs  → Home, Search, Saved, Map, Profile
+```
+
+- Route files live in `app/` (thin wrappers)
+- Screen UI lives in `src/screens/`
+- Route constants live in `src/navigation/routes.ts`
+- Auth gate stub: `src/hooks/useAuth.ts` (`isAuthenticated` flip switches Auth vs Tabs)
+
 ## Already wired
 
-- Expo Router + TypeScript
+- Expo Router + React Navigation (stack + bottom tabs)
 - NativeWind (`className` styling)
 - Supabase + Google Places service scaffolding
-- Clean folder layout (no Expo demo screens)
+- Placeholder screens only (no Figma UI yet)
 
 ## Useful scripts
 

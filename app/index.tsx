@@ -1,9 +1,27 @@
-import { HomeScreen } from "@/screens/HomeScreen";
+import { Redirect } from "expo-router";
+import { ActivityIndicator, View } from "react-native";
+
+import { useAuth } from "@/hooks/useAuth";
+import { routes } from "@/navigation";
 
 /**
- * Route file for "/".
- * Keep route files thin — real UI lives in src/screens/.
+ * App entry redirect.
+ * Sends users to Auth or Tabs based on the auth stub (later: Supabase session).
  */
-export default function HomeRoute() {
-  return <HomeScreen />;
+export default function Index() {
+  const { isAuthenticated, isLoading } = useAuth();
+
+  if (isLoading) {
+    return (
+      <View className="flex-1 items-center justify-center bg-white">
+        <ActivityIndicator />
+      </View>
+    );
+  }
+
+  if (isAuthenticated) {
+    return <Redirect href={routes.tabs.root} />;
+  }
+
+  return <Redirect href={routes.auth.welcome} />;
 }

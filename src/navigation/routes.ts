@@ -1,9 +1,21 @@
 /**
- * Central route names for Expo Router.
- * Use these instead of hardcoding path strings in buttons/links.
+ * Central route paths for Expo Router / React Navigation.
+ * Prefer these constants over hardcoded strings.
  */
 export const routes = {
-  home: "/",
+  root: "/",
+  auth: {
+    root: "/(auth)",
+    welcome: "/(auth)/welcome",
+    login: "/(auth)/login",
+    signUp: "/(auth)/sign-up",
+  },
+  tabs: {
+    root: "/(tabs)",
+    home: "/(tabs)",
+    search: "/(tabs)/search",
+    saved: "/(tabs)/saved",
+    map: "/(tabs)/map",
+    profile: "/(tabs)/profile",
+  },
 } as const;
-
-export type AppRoute = (typeof routes)[keyof typeof routes];

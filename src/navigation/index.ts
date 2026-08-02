@@ -1,1 +1,6 @@
-export { routes, type AppRoute } from "./routes";
+export { routes } from "./routes";
+export type {
+  AuthStackParamList,
+  MainTabParamList,
+  RootStackParamList,
+} from "./types";
