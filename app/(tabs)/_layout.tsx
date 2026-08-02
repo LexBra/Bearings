@@ -3,6 +3,8 @@ import { Tabs } from "expo-router";
 import type { ComponentProps } from "react";
 import type { ColorValue } from "react-native";
 
+import { colors, fonts } from "@/theme";
+
 type IconName = ComponentProps<typeof Ionicons>["name"];
 
 function tabIcon(outline: IconName, solid: IconName) {
@@ -25,15 +27,23 @@ function tabIcon(outline: IconName, solid: IconName) {
 
 /**
  * Main tab navigator (React Navigation bottom tabs via Expo Router).
- * Tabs: Home, Search, Saved, Map, Profile — placeholders until Figma UI.
+ * Tab colors/fonts come from the Bearings theme tokens.
  */
 export default function TabsLayout() {
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
-        tabBarActiveTintColor: "#1F4B3A",
-        tabBarInactiveTintColor: "#6B8F7E",
+        tabBarActiveTintColor: colors.brand.DEFAULT,
+        tabBarInactiveTintColor: colors.text.muted,
+        tabBarStyle: {
+          backgroundColor: colors.surface.DEFAULT,
+          borderTopColor: colors.border.DEFAULT,
+        },
+        tabBarLabelStyle: {
+          fontFamily: fonts.sans.medium,
+          fontSize: 12,
+        },
       }}
     >
       <Tabs.Screen

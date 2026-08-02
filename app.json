@@ -8,7 +8,7 @@
     "splash": {
       "image": "./assets/images/splash-icon.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#F1F6F3"
     },
     "scheme": "bearings",
     "userInterfaceStyle": "light",
@@ -19,7 +19,7 @@
     },
     "android": {
       "adaptiveIcon": {
-        "backgroundColor": "#E6F4FE",
+        "backgroundColor": "#1F4B3A",
         "foregroundImage": "./assets/icons/android-icon-foreground.png",
         "backgroundImage": "./assets/icons/android-icon-background.png",
         "monochromeImage": "./assets/icons/android-icon-monochrome.png"
@@ -33,7 +33,9 @@
     },
     "plugins": [
       "expo-router",
-      "expo-secure-store"
+      "expo-secure-store",
+      "expo-font",
+      "expo-splash-screen"
     ],
     "experiments": {
       "typedRoutes": true

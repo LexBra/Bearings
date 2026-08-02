@@ -2,6 +2,7 @@
   "extends": "expo/tsconfig.base",
   "compilerOptions": {
     "strict": true,
+    "allowJs": true,
     "ignoreDeprecations": "6.0",
     "baseUrl": ".",
     "paths": {
@@ -11,6 +12,7 @@
   "include": [
     "**/*.ts",
     "**/*.tsx",
+    "src/theme/tokens.js",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
     "nativewind-env.d.ts"

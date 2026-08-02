@@ -102,6 +102,32 @@ import { routes } from "@/navigation";
 
 ---
 
+## Design system
+
+All visual tokens live in **one file**: `src/theme/tokens.js`.
+
+| Piece | Where | How to use |
+| --- | --- | --- |
+| Colors, spacing, radii, shadows, fonts | `src/theme/tokens.js` | `import { theme, colors } from "@/theme"` |
+| NativeWind / Tailwind mapping | `tailwind.config.js` (reads tokens) | `className="bg-brand text-ink-primary"` |
+| Text styles | `<AppText variant="title" />` | `src/components/ui/Text.tsx` |
+| Buttons | `<Button label="Continue" />` | variants: `primary` `secondary` `ghost` `danger` |
+| Cards | `<Card variant="elevated">` | variants: `elevated` `outlined` `soft` |
+
+**Brand fonts:** Fraunces (display / brand moments) + Manrope (UI body). Loaded in `app/_layout.tsx`.
+
+**To restyle the app later:** edit `src/theme/tokens.js` only — components and Tailwind both read from it. When Figma tokens arrive, replace values there.
+
+```tsx
+import { AppText, Button, Card } from "@/components/ui";
+
+<Card variant="soft">
+  <AppText variant="headline">Saved places</AppText>
+  <AppText variant="body" color="muted">Coming from Figma next.</AppText>
+  <Button label="Continue" className="mt-4" />
+</Card>
+```
+
 ## Navigation structure
 
 Bearings uses **Expo Router** (built on **React Navigation**):
